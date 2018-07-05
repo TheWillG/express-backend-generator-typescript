@@ -1,0 +1,21 @@
+{
+  "name": "generator-express-backend-typescript",
+  "version": "1.0.0",
+  "description": "Generate Express TypeScript backends using a single configuration file",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "helmet": "^3.12.1",
+    "joi": "^13.4.0",
+    "js-yaml": "^3.12.0",
+    "ncp": "^2.0.0",
+    "replace-in-file": "^3.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

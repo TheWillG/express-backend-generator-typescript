@@ -1,0 +1,21 @@
+app:
+  name: Test App
+  models:
+    house:
+      variables:
+        cost: String
+        color: String
+        build: String
+        neighborhood: String
+    animal:
+      variables:
+        name: String
+        weight: Number
+        color: String
+        breed: String
+        family: String
+        age: Number
+    school:
+      variables:
+        name: String
+        location: String

@@ -1,0 +1,9 @@
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
+
+const SCHEMA_NAME = new Schema({
+  MODEL_VARIABLES
+});
+mongoose.model("MODEL_NAME_CAP", SCHEMA_NAME);
+
+export default SCHEMA_NAME;

@@ -1,0 +1,42 @@
+import { celebrate, Joi } from "celebrate";
+
+const putMODEL_NAME_CAP = celebrate({
+  params: {
+    id: Joi.string().required(),
+  },
+  body: Joi.object().keys({
+    BODY_PARAMS
+  })
+});
+
+const getAllMODEL_NAME_CAPs = celebrate({
+  query: {
+    QUERY_PARAMS
+  },
+});
+
+const getMODEL_NAME_CAP = celebrate({
+  params: {
+    id: Joi.string().required(),
+  },
+});
+
+const postMODEL_NAME_CAP = celebrate({
+  body: Joi.object().keys({
+    BODY_PARAMS
+  }),
+});
+
+const deleteMODEL_NAME_CAP = celebrate({
+  params: {
+    id: Joi.string().required(),
+  },
+});
+
+export default {
+  putMODEL_NAME_CAP,
+  getAllMODEL_NAME_CAPs,
+  getMODEL_NAME_CAP,
+  postMODEL_NAME_CAP,
+  deleteMODEL_NAME_CAP
+};
