@@ -1,0 +1,8 @@
+app:
+  name: Test App
+  models:
+    person:
+      variables:
+        id: String
+        name: String
+        location: String
