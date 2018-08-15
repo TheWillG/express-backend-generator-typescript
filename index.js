@@ -20,11 +20,11 @@ const createController = require('./lib/createController');
   let combinedControllerImports = '';
   let combinedValidationImports = '';
   let combinedRouteHandlers = '';
-  const modelImports = Object.keys(config.app.models).map(m => `import "../models/${m}";\n`).join('');
+  const modelImports = Object.keys(config.app.resources).map(m => `import "../models/${m}";\n`).join('');
   const controllersIndexFilePath = './generatedApp/src/controllers/index.ts';
 
-  await Promise.all(Object.keys(config.app.models).map(async (modelName) => {
-    const model = config.app.models[modelName];
+  await Promise.all(Object.keys(config.app.resources).map(async (modelName) => {
+    const model = config.app.resources[modelName];
     try {
       await createModel(modelName, model);
       await createValidators(modelName, model);

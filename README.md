@@ -9,7 +9,7 @@ This generator is a CRUD app generator with server-side validation on all reques
 # replace all CAPITAL_NAMES with your own custom fields
 app:
   name: APP_NAME
-  models:
+  resources:
     MODEL_NAME_1:
       variables:
         MODEL_FIELD_1: PRIMITIVE_TYPE
