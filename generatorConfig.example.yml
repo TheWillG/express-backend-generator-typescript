@@ -1,8 +1,7 @@
 app:
-  name: Test App
+  name: TestApp
   resources:
-    person:
-      variables:
-        id: String
-        name: String
-        location: String
+    employee:
+      id: String
+      name: String
+      location: String
