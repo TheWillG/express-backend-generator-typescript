@@ -1,4 +1,5 @@
 # Express Generator Backend Typescript
+Generate entire TypeScript CRUD API with one simple YAML file.
 This generator is powered by TypeScript, Express, Mongoose/MongoDB, log4js, and Joi.
 
 ## Overview
@@ -14,11 +15,19 @@ app:
   #auth: basic      #uncomment to include basic auth
   resources:
     MODEL_NAME_1:
-      MODEL_FIELD_1: PRIMITIVE_TYPE
-      MODEL_FIELD_2: PRIMITIVE_TYPE
+      properties:
+        MODEL_FIELD_1: PRIMITIVE_TYPE
+        MODEL_FIELD_2: PRIMITIVE_TYPE
+      actions:
+        - CONTROLLER_ACTION_1
+        - CONTROLLER_ACTION_2
+        - CONTROLLER_ACTION_3
     MODEL_NAME_2:
-      MODEL_FIELD_1: PRIMITIVE_TYPE
-      MODEL_FIELD_2: PRIMITIVE_TYPE
+      properties:
+        MODEL_FIELD_1: PRIMITIVE_TYPE
+        MODEL_FIELD_2: PRIMITIVE_TYPE
+      actions:
+        - CONTROLLER_ACTION_1
 ```
 
 Here is an example:
@@ -28,9 +37,13 @@ app:
   name: TestApp
   resources:
     employee:
-      id: String
-      name: String
-      location: String
+      properties:
+        id: String
+        name: String
+        location: String
+      actions:
+        - GET
+        - POST
 ```
 
 ## Getting Started
