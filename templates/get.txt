@@ -1,18 +1,20 @@
+import { fetchMODEL_NAME_CAP, fetchMODEL_NAME_CAPs } from "../services/MODELNAME/fetchMODEL_NAME_CAP";
+
 export const getMODEL_NAME_CAP = async (req: Request, res: Response) => {
-  const _id = req.params.id;
+  const { id } = req.params;
   try {
-    const MODELNAME = await MODEL_NAME_CAP.findOne({ _id });
-    res.status(200).json(MODELNAME);
+    const MODELNAME = await fetchMODEL_NAME_CAP(id);
+    res.status(200).send(MODELNAME);
   } catch (e) {
-    logger.error(`Failed to get MODELNAME with id ${_id}`, e);
+    logger.error(`Failed to get MODELNAME with id ${id}`, e);
     res.status(404).send({});
   }
 };
 
 export const getMODEL_NAME_CAPs = async (req: Request, res: Response) => {
   try {
-    const MODELNAMEs = await MODEL_NAME_CAP.find(req.query);
-    res.status(200).json(MODELNAMEs);
+    const MODELNAMEs = await fetchMODEL_NAME_CAPs(req.query);
+    res.status(200).send(MODELNAMEs);
   } catch (e) {
     logger.error(`Failed to get MODELNAMEs`, e);
     res.status(404).send({});

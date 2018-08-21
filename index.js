@@ -8,6 +8,7 @@ const createValidators = require('./lib/createValidators');
 const createModel = require('./lib/createModel');
 const createRoutes = require('./lib/createRoutes');
 const createController = require('./lib/createController');
+const createServices = require('./lib/createServices');
 
 const templateFilePath = './generatorConfig.yml';
 
@@ -43,6 +44,7 @@ const templateFilePath = './generatorConfig.yml';
       await createModel(resourceName, resource);
       await createValidators(resourceName, resource);
       await createController(resourceName, resource);
+      await createServices(resourceName, resource);
       const {
         controllerImports,
         validationImports,

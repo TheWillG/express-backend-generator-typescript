@@ -1,0 +1,15 @@
+import mongoose from "mongoose";
+const MODEL_NAME_CAP = mongoose.model("MODEL_NAME_CAP");
+
+const fetchMODEL_NAME_CAP = (id: string) => {
+  return MODEL_NAME_CAP.findOne({ _id: id });
+};
+
+const fetchMODEL_NAME_CAPs = (query: any) => {
+  return MODEL_NAME_CAP.find(query);
+};
+
+export {
+  fetchMODEL_NAME_CAP,
+  fetchMODEL_NAME_CAPs
+};

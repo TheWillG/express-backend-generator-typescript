@@ -1,0 +1,10 @@
+import mongoose from "mongoose";
+const MODEL_NAME_CAP = mongoose.model("MODEL_NAME_CAP");
+
+const updateMODEL_NAME_CAP = (id: string, query: any) => {
+  return MODEL_NAME_CAP.update({ _id: id }, query, { upsert: true });
+};
+
+export {
+  updateMODEL_NAME_CAP
+};

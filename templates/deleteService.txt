@@ -1,0 +1,11 @@
+import mongoose from "mongoose";
+const MODEL_NAME_CAP = mongoose.model("MODEL_NAME_CAP");
+
+const removeMODEL_NAME_CAP = (id: string) => {
+  const _id = id;
+  return MODEL_NAME_CAP.remove({ _id }).exec();
+};
+
+export {
+  removeMODEL_NAME_CAP
+};

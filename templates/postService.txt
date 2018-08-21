@@ -1,0 +1,11 @@
+import mongoose from "mongoose";
+const MODEL_NAME_CAP = mongoose.model("MODEL_NAME_CAP");
+
+const createMODEL_NAME_CAP = (query: any) => {
+  const newMODEL_NAME_CAP = new MODEL_NAME_CAP(query);
+  return newMODEL_NAME_CAP.save();
+};
+
+export {
+  createMODEL_NAME_CAP
+};

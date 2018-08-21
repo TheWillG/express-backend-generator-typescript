@@ -1,8 +1,5 @@
-import mongoose from "mongoose";
 import { logger } from "../../lib/config";
 import { Request, Response } from "express";
-
-const MODEL_NAME_CAP = mongoose.model("MODEL_NAME_CAP");
 
 POST_ACTION
 GET_ACTION

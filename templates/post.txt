@@ -1,8 +1,9 @@
+import { createMODEL_NAME_CAP } from "../services/MODELNAME/createMODEL_NAME_CAP";
+
 export const postMODEL_NAME_CAP = async (req: Request, res: Response) => {
-  const newMODEL_NAME_CAP = new MODEL_NAME_CAP(req.body);
   try {
-    const savedMODEL_NAME_CAP = await newMODEL_NAME_CAP.save();
-    res.status(201).json({ _id: savedMODEL_NAME_CAP._id });
+    const { id } = await createMODEL_NAME_CAP(req.body);
+    res.status(201).json({ id });
   } catch (e) {
     logger.error("Failed to create new MODELNAME", e);
     res.status(422).send({});

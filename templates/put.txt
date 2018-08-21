@@ -1,10 +1,12 @@
+import { updateMODEL_NAME_CAP } from "../services/MODELNAME/updateMODEL_NAME_CAP";
+
 export const putMODEL_NAME_CAP = async (req: Request, res: Response) => {
-  const _id = req.params.id;
+  const { id } = req.params;
   try {
-    await MODEL_NAME_CAP.update({ _id }, req.body, { upsert: true });
+    await updateMODEL_NAME_CAP(id, req.body);
     res.status(200).json({});
   } catch (e) {
-    logger.error(`Failed to update MODELNAME with id ${_id}`, e);
+    logger.error(`Failed to update MODELNAME with id ${id}`, e);
     res.status(422).send({});
   }
 };
