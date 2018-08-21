@@ -1,0 +1,11 @@
+const getAllMODEL_NAME_CAPs = celebrate({
+  query: {
+    QUERY_PARAMS
+  },
+});
+
+const getMODEL_NAME_CAP = celebrate({
+  params: {
+    id: Joi.string().required(),
+  },
+});

@@ -37,17 +37,17 @@ const templateFilePath = './generatorConfig.yml';
   const modelImports = Object.keys(config.app.resources).map(m => `import "../models/${m}";\n`).join('');
   const controllersIndexFilePath = './generatedApp/src/controllers/index.ts';
 
-  await Promise.all(Object.keys(config.app.resources).map(async (modelName) => {
-    const model = config.app.resources[modelName];
+  await Promise.all(Object.keys(config.app.resources).map(async (resourceName) => {
+    const resource = config.app.resources[resourceName];
     try {
-      await createModel(modelName, model);
-      await createValidators(modelName, model);
-      await createController(modelName, model);
+      await createModel(resourceName, resource);
+      await createValidators(resourceName, resource);
+      await createController(resourceName, resource);
       const {
         controllerImports,
         validationImports,
         routeHandlers,
-      } = await createRoutes(modelName);
+      } = await createRoutes(resourceName, resource);
       combinedControllerImports += controllerImports;
       combinedValidationImports += validationImports;
       combinedRouteHandlers += `${routeHandlers}\n`;

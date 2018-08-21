@@ -4,64 +4,10 @@ import { Request, Response } from "express";
 
 const MODEL_NAME_CAP = mongoose.model("MODEL_NAME_CAP");
 
-const postMODEL_NAME_CAP = async (req: Request, res: Response) => {
-  const newMODEL_NAME_CAP = new MODEL_NAME_CAP(req.body);
-  try {
-    const savedMODEL_NAME_CAP = await newMODEL_NAME_CAP.save();
-    res.status(201).json({ _id: savedMODEL_NAME_CAP._id });
-  } catch (e) {
-    logger.error("Failed to create new MODELNAME", e);
-    res.status(422).send({});
-  }
-};
-
-const putMODEL_NAME_CAP = async (req: Request, res: Response) => {
-  const _id = req.params.id;
-  try {
-    await MODEL_NAME_CAP.update({ _id }, req.body, { upsert: true });
-    res.status(200).json({});
-  } catch (e) {
-    logger.error(`Failed to update MODELNAME with id ${_id}`, e);
-    res.status(422).send({});
-  }
-};
-
-const getMODEL_NAME_CAP = async (req: Request, res: Response) => {
-  const _id = req.params.id;
-  try {
-    const MODELNAME = await MODEL_NAME_CAP.findOne({ _id });
-    res.status(200).json(MODELNAME);
-  } catch (e) {
-    logger.error(`Failed to get MODELNAME with id ${_id}`, e);
-    res.status(404).send({});
-  }
-};
-
-const getMODEL_NAME_CAPs = async (req: Request, res: Response) => {
-  try {
-    const MODELNAMEs = await MODEL_NAME_CAP.find(req.query);
-    res.status(200).json(MODELNAMEs);
-  } catch (e) {
-    logger.error(`Failed to get MODELNAMEs`, e);
-    res.status(404).send({});
-  }
-};
-
-const deleteMODEL_NAME_CAP = async (req: Request, res: Response) => {
-  const _id = req.params.id;
-  try {
-    await MODEL_NAME_CAP.remove({ _id }).exec();
-    res.status(200).send({});
-  } catch (e) {
-    logger.error(`Failed to delete MODELNAME with id ${_id}`, e);
-    res.status(404).send({});
-  }
-};
+POST_ACTION
+GET_ACTION
+PUT_ACTION
+DELETE_ACTION
 
 export default {
-  postMODEL_NAME_CAP,
-  putMODEL_NAME_CAP,
-  getMODEL_NAME_CAP,
-  getMODEL_NAME_CAPs,
-  deleteMODEL_NAME_CAP
-};
+ACTION_EXPORTS};

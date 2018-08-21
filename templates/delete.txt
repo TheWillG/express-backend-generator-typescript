@@ -1,0 +1,10 @@
+export const deleteMODEL_NAME_CAP = async (req: Request, res: Response) => {
+  const _id = req.params.id;
+  try {
+    await MODEL_NAME_CAP.remove({ _id }).exec();
+    res.status(200).send({});
+  } catch (e) {
+    logger.error(`Failed to delete MODELNAME with id ${_id}`, e);
+    res.status(404).send({});
+  }
+};

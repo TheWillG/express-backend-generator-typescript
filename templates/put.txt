@@ -1,0 +1,10 @@
+export const putMODEL_NAME_CAP = async (req: Request, res: Response) => {
+  const _id = req.params.id;
+  try {
+    await MODEL_NAME_CAP.update({ _id }, req.body, { upsert: true });
+    res.status(200).json({});
+  } catch (e) {
+    logger.error(`Failed to update MODELNAME with id ${_id}`, e);
+    res.status(422).send({});
+  }
+};

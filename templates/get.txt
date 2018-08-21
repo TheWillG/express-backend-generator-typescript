@@ -1,0 +1,20 @@
+export const getMODEL_NAME_CAP = async (req: Request, res: Response) => {
+  const _id = req.params.id;
+  try {
+    const MODELNAME = await MODEL_NAME_CAP.findOne({ _id });
+    res.status(200).json(MODELNAME);
+  } catch (e) {
+    logger.error(`Failed to get MODELNAME with id ${_id}`, e);
+    res.status(404).send({});
+  }
+};
+
+export const getMODEL_NAME_CAPs = async (req: Request, res: Response) => {
+  try {
+    const MODELNAMEs = await MODEL_NAME_CAP.find(req.query);
+    res.status(200).json(MODELNAMEs);
+  } catch (e) {
+    logger.error(`Failed to get MODELNAMEs`, e);
+    res.status(404).send({});
+  }
+};

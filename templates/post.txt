@@ -1,0 +1,10 @@
+export const postMODEL_NAME_CAP = async (req: Request, res: Response) => {
+  const newMODEL_NAME_CAP = new MODEL_NAME_CAP(req.body);
+  try {
+    const savedMODEL_NAME_CAP = await newMODEL_NAME_CAP.save();
+    res.status(201).json({ _id: savedMODEL_NAME_CAP._id });
+  } catch (e) {
+    logger.error("Failed to create new MODELNAME", e);
+    res.status(422).send({});
+  }
+};

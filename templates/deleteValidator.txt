@@ -1,0 +1,5 @@
+const deleteMODEL_NAME_CAP = celebrate({
+  params: {
+    id: Joi.string().required(),
+  },
+});

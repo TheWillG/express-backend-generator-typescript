@@ -1,0 +1,5 @@
+const postMODEL_NAME_CAP = celebrate({
+  body: Joi.object().keys({
+    BODY_PARAMS
+  }),
+});

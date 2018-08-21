@@ -1,0 +1,8 @@
+const putMODEL_NAME_CAP = celebrate({
+  params: {
+    id: Joi.string().required(),
+  },
+  body: Joi.object().keys({
+    BODY_PARAMS
+  })
+});
