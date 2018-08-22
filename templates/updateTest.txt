@@ -1,0 +1,15 @@
+it("Updates a MODEL_NAME", done => {
+  const mockMODEL_NAME_CAP = {
+    BODY_PARAMS
+  };
+  jest.doMock("../src/services/MODEL_NAME/updateMODEL_NAME_CAP", () => ({
+    updateMODEL_NAME_CAP(id, query) {
+      return Promise.resolve({});
+    }
+  }));
+  const { app } = require("../src/app");
+  request(app)
+    .put("/api/v1/MODEL_NAME/1")
+    .send(mockMODEL_NAME_CAP)
+    .expect(200, done);
+});

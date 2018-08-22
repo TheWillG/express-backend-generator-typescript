@@ -5,8 +5,8 @@ const router = express.Router();
 
 ROUTE_HANDLERS;
 // User routes
-router.post("/signup", userController.signup);
-router.post("/login", userController.login);
-router.get("/logout", userController.logout);
+router.post("/auth/signup", userController.signup);
+router.post("/auth/login", userController.login);
+router.get("/auth/logout", userController.logout);
 
 export default router;

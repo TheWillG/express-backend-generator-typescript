@@ -1,0 +1,31 @@
+it("Gets all MODEL_NAMEs", done => {
+  const mockMODEL_NAME_CAPs = [
+    {
+      BODY_PARAMS
+    }
+  ];
+  jest.doMock("../src/services/MODEL_NAME/fetchMODEL_NAME_CAP", () => ({
+    fetchMODEL_NAME_CAPs(query) {
+      return Promise.resolve(mockMODEL_NAME_CAPs);
+    }
+  }));
+  const { app } = require("../src/app");
+  request(app)
+    .get("/api/v1/MODEL_NAME")
+    .expect(200, mockMODEL_NAME_CAPs, done);
+});
+
+it("Gets a single MODEL_NAME", done => {
+  const mockMODEL_NAME_CAP = {
+    BODY_PARAMS
+  };
+  jest.doMock("../src/services/MODEL_NAME/fetchMODEL_NAME_CAP", () => ({
+    fetchMODEL_NAME_CAP(id) {
+      return Promise.resolve(mockMODEL_NAME_CAP);
+    }
+  }));
+  const { app } = require("../src/app");
+  request(app)
+    .get("/api/v1/MODEL_NAME/1")
+    .expect(200, mockMODEL_NAME_CAP, done);
+});

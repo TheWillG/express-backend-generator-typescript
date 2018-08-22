@@ -1,0 +1,11 @@
+it("Deletes a MODEL_NAME", done => {
+  jest.doMock("../src/services/MODEL_NAME/removeMODEL_NAME_CAP", () => ({
+    removeMODEL_NAME_CAP(id, query) {
+      return Promise.resolve({});
+    }
+  }));
+  const { app } = require("../src/app");
+  request(app)
+    .delete("/api/v1/MODEL_NAME/1")
+    .expect(200, done);
+});

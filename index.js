@@ -9,6 +9,7 @@ const createModel = require('./lib/createModel');
 const createRoutes = require('./lib/createRoutes');
 const createController = require('./lib/createController');
 const createServices = require('./lib/createServices');
+const createTests = require('./lib/createTests');
 
 const templateFilePath = './generatorConfig.yml';
 
@@ -45,6 +46,7 @@ const templateFilePath = './generatorConfig.yml';
       await createValidators(resourceName, resource);
       await createController(resourceName, resource);
       await createServices(resourceName, resource);
+      await createTests(resourceName, resource);
       const {
         controllerImports,
         validationImports,
@@ -75,7 +77,7 @@ const templateFilePath = './generatorConfig.yml';
       ],
     };
     await replace(options);
-    exec(`mv generatedApp ${appFolderName} && cd ./${appFolderName} && npm i`);
+    exec(`mv generatedApp ${appFolderName} && cd ./${appFolderName} && npm i && npm run lint && npm run lint-tests`);
   } catch (e) {
     console.error(e);
   }

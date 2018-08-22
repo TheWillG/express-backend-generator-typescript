@@ -12,4 +12,6 @@ app.use(bodyParser.json());
 app.use("/api/v1/", controllers);
 app.use(errors());
 
-export default app;
+export { 
+  app
+};

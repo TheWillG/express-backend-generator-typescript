@@ -1,0 +1,14 @@
+import request from "supertest";
+import {} from "jasmine";
+
+beforeEach(() => {
+  jest.clearAllMocks();
+  jest.resetModules();
+});
+
+describe("MODEL_NAME_CAPs", () => {
+  GET_TESTS
+  PUT_TESTS
+  POST_TESTS
+  DELETE_TESTS
+});
