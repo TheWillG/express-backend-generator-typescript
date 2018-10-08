@@ -13,3 +13,6 @@ app.use("/api/v1/", controllers);
 app.use(errors());
 
 export default app;
+
+// For Jest testing require()
+module.exports.app = app;

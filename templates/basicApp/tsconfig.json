@@ -14,10 +14,13 @@
         "baseUrl": ".",
         "paths": {
             "*": [
-                "node_modules/*",
-                "src/types/*"
+                "node_modules/*"
             ]
-        }
+        },
+        "types": [
+          "jest",
+          "node"
+        ]
     },
     "include": [
         "./index.ts",

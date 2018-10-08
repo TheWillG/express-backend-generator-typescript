@@ -1,5 +1,4 @@
 import { celebrate, Joi } from "celebrate";
-
 PUT_VALIDATOR
 GET_VALIDATOR
 POST_VALIDATOR

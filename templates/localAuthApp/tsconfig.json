@@ -17,14 +17,11 @@
                 "node_modules/*",
                 "src/types/*"
             ]
-        }
+        },
+        "types": []
     },
     "include": [
         "./index.ts",
         "src/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "**/*.spec.ts"
     ]
 }

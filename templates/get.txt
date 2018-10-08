@@ -1,4 +1,4 @@
-import { fetchMODEL_NAME_CAP, fetchMODEL_NAME_CAPs } from "../services/MODELNAME/fetchMODEL_NAME_CAP";
+import { fetchMODEL_NAME_CAP, fetchMODEL_NAME_CAPs } from "../../services/MODELNAME/fetchMODEL_NAME_CAP";
 
 export const getMODEL_NAME_CAP = async (req: Request, res: Response) => {
   const { id } = req.params;

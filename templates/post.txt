@@ -1,4 +1,4 @@
-import { createMODEL_NAME_CAP } from "../services/MODELNAME/createMODEL_NAME_CAP";
+import { createMODEL_NAME_CAP } from "../../services/MODELNAME/createMODEL_NAME_CAP";
 
 export const postMODEL_NAME_CAP = async (req: Request, res: Response) => {
   try {

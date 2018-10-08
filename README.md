@@ -14,7 +14,7 @@ app:
   name: APP_NAME
   #auth: basic      #uncomment to include basic auth
   resources:
-    MODEL_NAME_1:
+    MODEL_NAME_SINGULAR_1:
       properties:
         MODEL_FIELD_1: PRIMITIVE_TYPE
         MODEL_FIELD_2: PRIMITIVE_TYPE
@@ -22,7 +22,7 @@ app:
         - CONTROLLER_ACTION_1
         - CONTROLLER_ACTION_2
         - CONTROLLER_ACTION_3
-    MODEL_NAME_2:
+    MODEL_NAME_SINGULAR_2:
       properties:
         MODEL_FIELD_1: PRIMITIVE_TYPE
         MODEL_FIELD_2: PRIMITIVE_TYPE

@@ -2,6 +2,10 @@ app:
   name: TestApp
   resources:
     employee:
-      id: String
-      name: String
-      location: String
+      properties:
+        id: String
+        name: String
+        location: String
+      actions:
+        - GET
+        - POST

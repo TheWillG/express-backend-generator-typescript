@@ -1,19 +1,18 @@
 const yaml = require('js-yaml');
 const fs = require('fs');
-const util = require('util');
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 const replace = require('replace-in-file');
-const { ncp } = require('ncp');
 const createValidators = require('./lib/createValidators');
 const createModel = require('./lib/createModel');
 const createRoutes = require('./lib/createRoutes');
 const createController = require('./lib/createController');
 const createServices = require('./lib/createServices');
 const createTests = require('./lib/createTests');
+const {copyFolderRecursiveSync} = require('./lib/util');
 
 const templateFilePath = './generatorConfig.yml';
 
-(async () => {
+(() => {
   if (!fs.existsSync(templateFilePath)) {
     console.error(`Error: Could not locate file ${templateFilePath}`);
     return;
@@ -22,10 +21,10 @@ const templateFilePath = './generatorConfig.yml';
   const appTemplate = config.app.auth === 'basic' ? 'localAuthApp' : 'basicApp';
   const appFolderName = config.app.name.replace(/ /g, '');
   try {
-    const ncpP = util.promisify(ncp);
-    await ncpP(`./templates/${appTemplate}`, './generatedApp');
+    copyFolderRecursiveSync(`./templates/${appTemplate}`, '.');
+    fs.renameSync(appTemplate, './generatedApp');
   } catch (e) {
-    console.error('Error: Could not copy reference template.');
+    console.error('Error: Could not copy reference template.', e);
     return;
   }
 
@@ -39,26 +38,28 @@ const templateFilePath = './generatorConfig.yml';
   const modelImports = Object.keys(config.app.resources).map(m => `import "../models/${m}";\n`).join('');
   const controllersIndexFilePath = './generatedApp/src/controllers/index.ts';
 
-  await Promise.all(Object.keys(config.app.resources).map(async (resourceName) => {
+  const resourceKeys = Object.keys(config.app.resources);
+  for(let resourceName of resourceKeys) {
     const resource = config.app.resources[resourceName];
     try {
-      await createModel(resourceName, resource);
-      await createValidators(resourceName, resource);
-      await createController(resourceName, resource);
-      await createServices(resourceName, resource);
-      await createTests(resourceName, resource);
+      createModel(resourceName, resource);
+      createValidators(resourceName, resource);
+      createController(resourceName, resource);
+      createServices(resourceName, resource);
+      createTests(resourceName, resource);
       const {
         controllerImports,
         validationImports,
         routeHandlers,
-      } = await createRoutes(resourceName, resource);
+      } = createRoutes(resourceName, resource);
+
       combinedControllerImports += controllerImports;
       combinedValidationImports += validationImports;
       combinedRouteHandlers += `${routeHandlers}\n`;
     } catch (e) {
       console.error(e);
     }
-  }));
+  };
 
   try {
     const options = {
@@ -76,9 +77,13 @@ const templateFilePath = './generatorConfig.yml';
         modelImports,
       ],
     };
-    await replace(options);
-    exec(`mv generatedApp ${appFolderName} && cd ./${appFolderName} && npm i && npm run lint && npm run lint-tests`);
+    replace.sync(options);
+    execSync(`mv generatedApp ${appFolderName}`);
+    console.log(`App Generated!`);
+    console.log(`cd into ./${appFolderName} and run npm install, npm start!`);
   } catch (e) {
     console.error(e);
   }
 })();
+
+process.exit();

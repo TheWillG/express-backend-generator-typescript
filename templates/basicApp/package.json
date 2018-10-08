@@ -25,7 +25,8 @@
     "helmet": "^3.13.0",
     "log4js": "^2.10.0",
     "mongoose": "^5.2.0",
-    "morgan": "^1.9.0"
+    "morgan": "^1.9.0",
+    "cryptiles": "^4.1.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^2.0.0",

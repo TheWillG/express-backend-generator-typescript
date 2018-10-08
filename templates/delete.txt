@@ -1,4 +1,4 @@
-import { removeMODEL_NAME_CAP } from "../services/MODELNAME/removeMODEL_NAME_CAP";
+import { removeMODEL_NAME_CAP } from "../../services/MODELNAME/removeMODEL_NAME_CAP";
 
 export const deleteMODEL_NAME_CAP = async (req: Request, res: Response) => {
   const { id } = req.params;
