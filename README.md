@@ -5,14 +5,20 @@ This generator is powered by TypeScript, Express, Mongoose/MongoDB, log4js, and 
 ## Overview
 This generator is a CRUD app generator with server-side validation on all requests based on the model definitions.  It is driven by an input yaml file (generatorConfig.yml) that is read by the generator. 
 
+## Getting Started
+1. Create a `generatorConfig.yml` file in the project root directory following the provided outline.
+2. Run `npm run start` to run the app generator
+3. Change into the directory of the generated app
+4. Copy `.env-example` to `.env` and populate
+5. Start your app using `npm run start`!
+
+## Template File Outline
 The main schema of the input config file is:
 ```yaml
-# generatorConfig.yml
+# generatorConfig.yml <- Generator will look for this file
 
-# Replace all CAPITAL_NAMES with your own custom data
 app:
   name: APP_NAME
-  #auth: basic      #uncomment to include basic auth
   resources:
     MODEL_NAME_SINGULAR_1:
       properties:
@@ -30,11 +36,11 @@ app:
         - CONTROLLER_ACTION_1
 ```
 
-Here is an example:
+Example:
 ```yaml
 # generatorConfig.yml
 app:
-  name: TestApp
+  name: SuperCalendar
   resources:
     employee:
       properties:
@@ -45,10 +51,3 @@ app:
         - GET
         - POST
 ```
-
-## Getting Started
-1. Create a `generatorConfig.yml` file in the project root directory following the provided outline.
-2. Run `npm run start` to run the app generator
-3. Change into the directory of the generated app
-4. Copy `.env-example` to `.env` and populate
-5. Start your app using `npm run start`!

@@ -4,7 +4,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import { logger, port, mongoUrl, isProduction } from "./lib/config";
 
-mongoose.connect(mongoUrl);
+mongoose.connect(mongoUrl, { useNewUrlParser: true });
 
 app.use(helmet());
 isProduction ? app.use(morgan("combined")) : app.use(morgan("dev"));
